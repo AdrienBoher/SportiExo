@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="Map">
+	<head>
+		<title>Simple Map</title>
+		<link href="assets/css/style.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta charset="utf-8">	
+		<script type ="text/javascript" src="assets/js/lib/bootbox.min.js"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDYBG1rGkfv3V569J5SexZYBc3bVyHyMzY"></script>
+	</head>
+	<body ng-controller="MainController" ng-init="initParams()">
+		<div class="dropdown">
+		  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Choisissez votre sport
+		  <span class="caret"></span></button>
+		  <ul class="dropdown-menu">
+		    <li ng-repeat="hobbie in hobbies">
+			    <input type="checkbox"  name="{{hobbie.name}}" id="{{hobbie.name}}" ng-click="addSelectedHobbies(hobbie.name)">
+				<label>{{hobbie.name}}</label>
+		    </li>
+		  </ul>
+		  <button ng-click="displayHobbies()">GO !</button>
+		</div>
+		<div id="map">
+		</div>
+		<div id="snackbar">
+			Une erreur est survenue pour trouver votre position : 
+			<button ng-click="initParams()">reessayer</button> 
+			<button ng-click="stopUserPos()">annuler</button>
+		</div>
+		<div id="snackbarHobbies">
+			Une erreur est survenue pour localiser vos sports : 
+			<button ng-click="displayHobbies()">reessayer</button> 
+		</div>
+	</body>
+	<script type="text/javascript" src="assets/js/script.js"></script>
+</html>
